@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Chat Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>WhatsApp Chat Analyzer</h1>
+                <nav>
+                    <a href="#how-it-works">How it works</a>
+                    <a href="#about">About</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="upload-section">
+            <h2>Analyze Your WhatsApp Chat</h2>
+            <p class="subtitle">Upload your exported WhatsApp chat file to get insights on word usage, emoji patterns, and active hours.</p>
+            
+            <div class="upload-area" id="dropZone">
+                <img src="static/images/upload.svg" alt="Upload" class="upload-icon">
+                <p>Drag & drop your WhatsApp chat file here, or click to browse</p>
+                <p class="upload-hint">Only .txt files exported from WhatsApp are supported</p>
+                <input type="file" id="fileInput" accept=".txt" class="file-input">
+            </div>
+
+            <div id="fileInfo" class="file-info hidden">
+                <span class="file-name"></span>
+                <button id="analyzeBtn" class="btn btn-primary">Analyze Chat</button>
+            </div>
+
+            <div id="error" class="error-message hidden"></div>
+        </section>
+
+        <section id="results" class="results-section hidden">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Messages</h3>
+                    <p id="totalMessages" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Words</h3>
+                    <p id="totalWords" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Emojis</h3>
+                    <p id="totalEmojis" class="stat-value">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Participants</h3>
+                    <p id="participants" class="stat-value">0</p>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Most Used Words</h3>
+                    <canvas id="wordChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Most Used Emojis</h3>
+                    <canvas id="emojiChart"></canvas>
+                </div>
+                <div class="chart-card full-width">
+                    <h3>Activity by Hour</h3>
+                    <canvas id="hourlyChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 WhatsApp Analyzer. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="static/js/app.js"></script>
+</body>
+</html>
